@@ -1,13 +1,12 @@
 .ul {
-  border: 1px solid #808080;
+  /* border: 1px solid #808080; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
   justify-content: center;
-
-  background-color: #f4f2f2;
+  background-color: #fff;
   padding: 30px;
 }
 

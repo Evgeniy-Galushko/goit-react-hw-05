@@ -13,6 +13,7 @@ export default function Home() {
     async function request() {
       try {
         setLoader(true);
+        setHomeRequest([]);
         const data = await requestHome();
         console.log(data.data.results);
         setHomeRequest(data.data.results);

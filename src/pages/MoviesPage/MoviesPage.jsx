@@ -4,6 +4,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import TopList from "../../components/TopList/TopList";
 
 export default function MoviesPage() {
   const [moviesRequest, setMoviesRequest] = useState([]);
@@ -20,7 +21,7 @@ export default function MoviesPage() {
     setSearchText(text);
   };
 
-  console.log(searchText);
+  console.log(moviesRequest);
 
   useEffect(() => {
     async function request() {
@@ -30,9 +31,9 @@ export default function MoviesPage() {
         }
         setLoader(true);
         const data = await requestMovies(searchText, page);
-        console.log(data);
-        setMoviesRequest(data.data.results);
-        setTotalNumberOfPages(data);
+        console.log(data.data.results);
+        setTotalNumberOfPages(data.data.total_pages);
+        setMoviesRequest((prevImages) => [...prevImages, ...data.data.results]);
       } catch (error) {
         console.log(error);
         setErrorMessage(true);
@@ -52,6 +53,7 @@ export default function MoviesPage() {
       {errorMessage && <ErrorMessage />}
       <SearchBar handleSubmit={handleSubmit} />
       {loader && <Loader />}
+      <TopList homeRequest={moviesRequest} />
       {page < totalNumberOfPages && (
         <LoadMoreBtn onClick={handleClick}>Load more</LoadMoreBtn>
       )}

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function requestHome() {
   const savedQuery = await axios.get(
-    "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
+    "https://api.themoviedb.org/3/trending/movie/day?language=ru",
     {
       headers: {
         Authorization:
