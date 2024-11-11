@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   /* margin: 0 auto; */
   /* padding: 2rem; */
   /* text-align: center; */
@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 } */
+.heder {
+  height: auto;
+  padding: 25px;
+  box-shadow: 10px 10px 8px 1px #052c65;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  background: linear-gradient(to right, #052c65 0%, rgba(3, 37, 65, 1) 100%);
+}
+
+.heder-nav {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+}

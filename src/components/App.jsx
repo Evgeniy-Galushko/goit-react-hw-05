@@ -1,32 +1,29 @@
-import { useState } from "react";
-
-import { Routes, Route } from "react-router-dom";
-// import Home from "path/to/pages/Home";
-// import About from "path/to/pages/About";
-// import Products from "path/to/pages/Products";
-
+import { useState, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import "./App.css";
+import { Routes, Route, NavLink } from "react-router-dom";
+
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
+const NotFound = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
 function App() {
+  const [dataTopList, setDataTopList] = useState();
+
   return (
     <div>
-      <nav>
-        <Link to="/"> Home </Link>
-        <Link Link to="/about">
-          {" "}
-          About{" "}
-        </Link>
-        <Link to="/products"> Products </Link>
+      <nav className="heder">
+        <NavLink to="/" className="heder-nav">
+          Home
+        </NavLink>
+        <NavLink to="/movies" className="heder-nav">
+          Movies
+        </NavLink>
       </nav>
+      <Suspense fallback={<div>Loading page...</div>}></Suspense>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />}>
-          <Route path="mission " element={<Mission />} />
-          <Route path="team" element={<Team />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/movies" element={<MoviesPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

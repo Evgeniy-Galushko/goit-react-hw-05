@@ -1,0 +1,20 @@
+.ul {
+  border: 1px solid #808080;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #f4f2f2;
+  padding: 30px;
+}
+
+.li {
+  box-sizing: border-box;
+  padding: 15px;
+  width: 680px;
+  height: 420px;
+  box-shadow: 10px 10px 10px 10px #808080;
+}

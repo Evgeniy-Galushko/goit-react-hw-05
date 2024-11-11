@@ -1,0 +1,31 @@
+.btn {
+  display: block;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 8px 16px;
+  width: 125px;
+  height: 40px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.btn:hover {
+  background: linear-gradient(
+    to right,
+    rgba(1, 180, 228, 1) 0%,
+    rgba(30, 213, 169, 1) 100%
+  );
+}
