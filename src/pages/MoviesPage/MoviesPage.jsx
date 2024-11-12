@@ -5,7 +5,6 @@ import Loader from "../../components/Loader/Loader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import MovieList from "../../components/MovieList/MovieList";
-import { Routes, Route, NavLink } from "react-router-dom";
 
 export default function MoviesPage() {
   const [moviesRequest, setMoviesRequest] = useState([]);
@@ -51,9 +50,9 @@ export default function MoviesPage() {
 
   return (
     <>
-      {errorMessage && <ErrorMessage />}
       <SearchBar handleSubmit={handleSubmit} />
       {loader && <Loader />}
+      {errorMessage && <ErrorMessage />}
       <MovieList homeRequest={moviesRequest} />
       {page < totalNumberOfPages && (
         <LoadMoreBtn onClick={handleClick}>Load more</LoadMoreBtn>

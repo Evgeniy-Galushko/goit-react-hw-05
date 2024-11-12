@@ -1,0 +1,73 @@
+.navlink {
+  padding-left: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #000;
+  flex-direction: row;
+  display: flex;
+}
+
+.divPages {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #000;
+}
+
+.hTwo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #000;
+}
+
+.hThree {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #000;
+}
+
+.paragraph {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #000;
+}
+
+.divPagesImg {
+  max-width: 500px;
+  max-height: 420px;
+}
+
+.divPagesDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.genres {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.divPagesCast {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}

@@ -48,6 +48,7 @@
   flex-direction: row;
   gap: 25px;
   background: linear-gradient(to right, #052c65 0%, rgba(3, 37, 65, 1) 100%);
+  margin-bottom: 25px;
 }
 
 .heder-nav {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { Suspense, lazy } from "react";
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
@@ -13,11 +13,6 @@ const MovieDetailsPage = lazy(() =>
 );
 
 function App() {
-  // const [dataTopList, setDataTopList] = useState();
-  const handleChange = (modalData) => {
-    setModalIsOpen(true);
-    setModalPhoto(modalData);
-  };
   return (
     <>
       <nav className="heder">
@@ -28,16 +23,17 @@ function App() {
           Movies
         </NavLink>
       </nav>
-      <Suspense fallback={<div>Loading page...</div>}></Suspense>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-          <Route path="cast" element={<MovieCast />} />
-          <Route path="reviews" element={<MovieReviews />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
