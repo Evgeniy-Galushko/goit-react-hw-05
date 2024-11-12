@@ -1,9 +1,10 @@
 // import { useState, useEffect } from "react";
 import { Suspense, lazy } from "react";
 import "./App.css";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { MovieCast } from "./MovieCast/MovieCast";
 import { MovieReviews } from "./MovieReviews/MovieReviews";
+import NavHeader from "./NavHeader/NavHeader";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
@@ -15,14 +16,7 @@ const MovieDetailsPage = lazy(() =>
 function App() {
   return (
     <>
-      <nav className="heder">
-        <NavLink to="/" className="heder-nav">
-          Home
-        </NavLink>
-        <NavLink to="/movies" className="heder-nav">
-          Movies
-        </NavLink>
-      </nav>
+      <NavHeader />
       <Suspense fallback={<div>Loading page...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -1,10 +1,18 @@
 import s from "./MovieDetailsPage.module.css";
-import { Link, NavLink, useLocation, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
 import { useEffect, useRef, useState } from "react";
 import { requestMoviesId } from "../../requests-API";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
+import { MovieCast } from "../../components/MovieCast/MovieCast";
+import { MovieReviews } from "../../components/MovieReviews/MovieReviews";
 
 export default function MovieDetailsPage() {
   const [errorMessage, setErrorMessage] = useState(false);
@@ -16,7 +24,6 @@ export default function MovieDetailsPage() {
   const backLinkHref = useRef(location.state ?? "/movies");
 
   const { movieId } = useParams();
-  console.log(movieId);
 
   useEffect(() => {
     async function movieDetail() {
@@ -24,7 +31,6 @@ export default function MovieDetailsPage() {
         setLoader(true);
         const data = await requestMoviesId(movieId);
         setMovie(data);
-        console.log(data);
       } catch (error) {
         setErrorMessage(true);
       } finally {
@@ -36,8 +42,6 @@ export default function MovieDetailsPage() {
   }, [movieId]);
 
   const defaultImg = "../../img/000.jpg";
-
-  console.log(movie);
 
   return (
     <>
@@ -85,7 +89,16 @@ export default function MovieDetailsPage() {
       </div>
       <div className={s.divPagesCast}>
         <h2 className={s.hTwo}>Additional information</h2>
+        <ul>
+          <li>
+            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+          </li>
+          <li>
+            <Link to={`/movies/${movieId}/cast`}>Reviews</Link>
+          </li>
+        </ul>
       </div>
+      <Outlet />
     </>
   );
 }

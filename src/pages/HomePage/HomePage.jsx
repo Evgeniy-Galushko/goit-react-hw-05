@@ -16,7 +16,6 @@ export default function Home() {
         setErrorMessage(false);
         setHomeRequest([]);
         const data = await requestHome();
-        console.log(data.data.results);
         setHomeRequest(data.data.results);
       } catch (error) {
         setErrorMessage(true);
