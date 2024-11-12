@@ -4,7 +4,8 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
-import TopList from "../../components/TopList/TopList";
+import MovieList from "../../components/MovieList/MovieList";
+import { Routes, Route, NavLink } from "react-router-dom";
 
 export default function MoviesPage() {
   const [moviesRequest, setMoviesRequest] = useState([]);
@@ -30,12 +31,12 @@ export default function MoviesPage() {
           return;
         }
         setLoader(true);
+        setErrorMessage(false);
         const data = await requestMovies(searchText, page);
         console.log(data.data.results);
         setTotalNumberOfPages(data.data.total_pages);
         setMoviesRequest((prevImages) => [...prevImages, ...data.data.results]);
       } catch (error) {
-        console.log(error);
         setErrorMessage(true);
       } finally {
         setLoader(false);
@@ -53,7 +54,7 @@ export default function MoviesPage() {
       {errorMessage && <ErrorMessage />}
       <SearchBar handleSubmit={handleSubmit} />
       {loader && <Loader />}
-      <TopList homeRequest={moviesRequest} />
+      <MovieList homeRequest={moviesRequest} />
       {page < totalNumberOfPages && (
         <LoadMoreBtn onClick={handleClick}>Load more</LoadMoreBtn>
       )}
