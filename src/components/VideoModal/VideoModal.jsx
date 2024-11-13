@@ -28,7 +28,6 @@ export default function VideoModal({ videoId, isOpen, onRequestClose }) {
 
     movieVideo();
   }, [videoId]);
-  console.log(video);
 
   const customStyles = {
     content: {
