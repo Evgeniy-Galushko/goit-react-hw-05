@@ -75,7 +75,6 @@ export default function MovieDetailsPage() {
                     ? `https://image.tmdb.org/t/p/w220_and_h330_face${movie.backdrop_path}`
                     : defaultImg
                 }
-                onClick={handleClick}
               />
             </div>
             <div className={s.divPagesDiv}>
@@ -97,6 +96,9 @@ export default function MovieDetailsPage() {
                   );
                 })}
               </ul>
+              <button onClick={handleClick} className={s.button}>
+                Trailer
+              </button>
             </div>
           </>
         )}
