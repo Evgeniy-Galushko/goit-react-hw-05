@@ -2,7 +2,8 @@ import s from "./MovieListCard.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 export default function MovieListCard({ id, src, overview, title }) {
-  const defaultImg = "../../img/000.jpg";
+  const defaultImg =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
   const location = useLocation();
   return (
     <>

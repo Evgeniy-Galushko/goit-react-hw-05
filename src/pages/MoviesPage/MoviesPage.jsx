@@ -5,6 +5,7 @@ import Loader from "../../components/Loader/Loader";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import MovieList from "../../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
   const [moviesRequest, setMoviesRequest] = useState([]);
@@ -15,13 +16,17 @@ export default function MoviesPage() {
   const [page, setPage] = useState(1);
   const [totalNumberOfPages, setTotalNumberOfPages] = useState(0);
 
+  const [searchParams, setSearchParams] = useSearchParams("");
+  const serchName = searchParams.get("name") ?? "";
+  console.log(serchName);
+
   const handleSubmit = (text) => {
     setMoviesRequest([]);
     setPage(1);
     setSearchText(text);
+    const nextParams = text !== "" ? { query: text } : {};
+    setSearchParams(nextParams);
   };
-
-  console.log(moviesRequest);
 
   useEffect(() => {
     async function request() {

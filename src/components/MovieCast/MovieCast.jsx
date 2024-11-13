@@ -12,7 +12,6 @@ export function MovieCast() {
   const [listOfActors, setListOfActors] = useState([]);
 
   const { movieId } = useParams();
-  console.log(movieId);
 
   useEffect(() => {
     async function movieCast() {
@@ -30,7 +29,8 @@ export function MovieCast() {
     movieCast();
   }, [movieId]);
 
-  const defaultImg = "../../img/000.jpg";
+  const defaultImg =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
   return (
     <>
       {errorMessage && <ErrorMessage />}
@@ -42,7 +42,7 @@ export function MovieCast() {
               <li key={id} className={s.movieCastLi}>
                 <img
                   src={
-                    profile_path !== null
+                    profile_path
                       ? `https://image.tmdb.org/t/p/w220_and_h330_face${profile_path}`
                       : defaultImg
                   }

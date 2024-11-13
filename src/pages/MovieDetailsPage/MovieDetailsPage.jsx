@@ -21,7 +21,8 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = useRef(location.state ?? "/movies");
+  const backLinkHref = useRef(location.state ?? `/movies`);
+  // console.log(location.state.search);
 
   const { movieId } = useParams();
 
@@ -41,11 +42,12 @@ export default function MovieDetailsPage() {
     movieDetail();
   }, [movieId]);
 
-  const defaultImg = "../../img/000.jpg";
+  const defaultImg =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
   return (
     <>
-      <NavLink to={backLinkHref.current} className={s.navlink}>
+      <NavLink to={backLinkHref.current} state={location} className={s.navlink}>
         <GoArrowLeft size="20px" className={s.arrow} />
         Go bac
       </NavLink>
@@ -91,10 +93,14 @@ export default function MovieDetailsPage() {
         <h2 className={s.hTwo}>Additional information</h2>
         <ul>
           <li>
-            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+            <NavLink to={`/movies/${movieId}/cast`} className={s.navLink}>
+              Cast
+            </NavLink>
           </li>
           <li>
-            <Link to={`/movies/${movieId}/cast`}>Reviews</Link>
+            <NavLink to={`/movies/${movieId}/reviews`} className={s.navLink}>
+              Reviews
+            </NavLink>
           </li>
         </ul>
       </div>

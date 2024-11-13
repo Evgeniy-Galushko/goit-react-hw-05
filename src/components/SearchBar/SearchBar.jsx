@@ -11,6 +11,7 @@ export default function RequestForm({ handleSubmit }) {
       return;
     }
     handleSubmit(text);
+    form.reset();
   };
   return (
     <div className={s.div}>
