@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import s from "./MovieCast.module.css";
 import { useEffect, useState } from "react";
 import { requestCast } from "../../requests-API";
@@ -19,7 +19,8 @@ export function MovieCast() {
         setLoader(true);
         const data = await requestCast(movieId);
         setListOfActors(data.cast);
-      } catch (erro) {
+      } catch (error) {
+        error;
         setErrorMessage(true);
       } finally {
         setLoader(false);

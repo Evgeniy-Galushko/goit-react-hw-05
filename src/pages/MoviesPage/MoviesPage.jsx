@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
   const [moviesRequest, setMoviesRequest] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  // const [searchText, setSearchText] = useState("");
 
   const [errorMessage, setErrorMessage] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -23,31 +23,32 @@ export default function MoviesPage() {
   const handleSubmit = (text) => {
     setMoviesRequest([]);
     setPage(1);
-    setSearchText(text);
-    const nextParams = text !== "" ? { query: text } : {};
+    // setSearchText(text);
+    const nextParams = text !== "" ? { name: text } : {};
     setSearchParams(nextParams);
   };
 
   useEffect(() => {
     async function request() {
       try {
-        if (searchText === "") {
+        if (serchName === "") {
           return;
         }
         setLoader(true);
         setErrorMessage(false);
-        const data = await requestMovies(searchText, page);
+        const data = await requestMovies(serchName, page);
         console.log(data.data.results);
         setTotalNumberOfPages(data.data.total_pages);
         setMoviesRequest((prevImages) => [...prevImages, ...data.data.results]);
       } catch (error) {
+        error;
         setErrorMessage(true);
       } finally {
         setLoader(false);
       }
     }
     request();
-  }, [searchText, page]);
+  }, [serchName, page]);
 
   const handleClick = () => {
     setPage(page + 1);

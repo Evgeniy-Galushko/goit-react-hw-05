@@ -1,22 +1,18 @@
 import s from "./MovieDetailsPage.module.css";
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
 import { useEffect, useRef, useState } from "react";
 import { requestMoviesId } from "../../requests-API";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
-import { MovieCast } from "../../components/MovieCast/MovieCast";
-import { MovieReviews } from "../../components/MovieReviews/MovieReviews";
+import VideoModal from "../../components/VideoModal/VideoModal";
 
 export default function MovieDetailsPage() {
   const [errorMessage, setErrorMessage] = useState(false);
   const [loader, setLoader] = useState(false);
+
+  const [videModal, setVideoModal] = useState(false);
+  const [videoId, setVideoId] = useState(false);
 
   const [movie, setMovie] = useState(null);
 
@@ -33,6 +29,7 @@ export default function MovieDetailsPage() {
         const data = await requestMoviesId(movieId);
         setMovie(data);
       } catch (error) {
+        error;
         setErrorMessage(true);
       } finally {
         setLoader(false);
@@ -41,6 +38,15 @@ export default function MovieDetailsPage() {
 
     movieDetail();
   }, [movieId]);
+
+  const handleClick = () => {
+    setVideoModal(true);
+    setVideoId(movieId);
+  };
+
+  function closeModal() {
+    setVideoModal(false);
+  }
 
   const defaultImg =
     "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
@@ -51,6 +57,11 @@ export default function MovieDetailsPage() {
         <GoArrowLeft size="20px" className={s.arrow} />
         Go bac
       </NavLink>
+      <VideoModal
+        videoId={videoId}
+        isOpen={videModal}
+        onRequestClose={closeModal}
+      />
       <div className={s.divPages}>
         {errorMessage && <ErrorMessage />}
         {loader && <Loader />}
@@ -64,6 +75,7 @@ export default function MovieDetailsPage() {
                     ? `https://image.tmdb.org/t/p/w220_and_h330_face${movie.backdrop_path}`
                     : defaultImg
                 }
+                onClick={handleClick}
               />
             </div>
             <div className={s.divPagesDiv}>

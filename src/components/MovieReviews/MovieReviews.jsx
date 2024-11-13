@@ -1,11 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import s from "./MovieReviews.module.css";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import { useEffect, useState } from "react";
 import { requestReviews } from "../../requests-API";
 
-export function MovieReviews(id) {
+export function MovieReviews() {
   const [loader, setLoader] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
@@ -20,7 +20,8 @@ export function MovieReviews(id) {
         const data = await requestReviews(movieId);
         setReviews(data.results);
         console.log(data.results);
-      } catch (erro) {
+      } catch (error) {
+        error;
         setErrorMessage(true);
       } finally {
         setLoader(false);
