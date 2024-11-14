@@ -55,7 +55,7 @@ export default function MovieDetailsPage() {
     <>
       <NavLink to={backLinkHref.current} state={location} className={s.navlink}>
         <GoArrowLeft size="20px" className={s.arrow} />
-        Go bac
+        Go back
       </NavLink>
       <VideoModal
         videoId={videoId}

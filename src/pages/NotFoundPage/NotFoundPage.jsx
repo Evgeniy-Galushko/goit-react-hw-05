@@ -20,7 +20,7 @@ export default function NotFoundPage() {
         className={s.divNavlink}
       >
         <GoArrowLeft size="30px" className={s.arrow} />
-        Go bac
+        Go back
       </NavLink>
     </div>
   );
