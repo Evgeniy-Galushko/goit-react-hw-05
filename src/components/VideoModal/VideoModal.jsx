@@ -7,12 +7,13 @@ import { requestVideo } from "../../requests-API";
 
 export default function VideoModal({ videoId, isOpen, onRequestClose }) {
   const [errorMessage, setErrorMessage] = useState(false);
-  const [video, setVideo] = useState([]);
+  const [video, setVideo] = useState("");
 
   useEffect(() => {
     async function movieVideo() {
       try {
         const data = await requestVideo(videoId);
+        console.log(data);
         const videos = data.results;
         if (videos.length === 0) {
           return;
@@ -50,12 +51,15 @@ export default function VideoModal({ videoId, isOpen, onRequestClose }) {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <iframe
-            src={`//www.youtube.com/embed/${video}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=ru&modestbranding=1&fs=1&autohide=1`}
-            width="1052"
-            height="591
-          "
-          ></iframe>
+          {video !== "" ? (
+            <iframe
+              src={`//www.youtube.com/embed/${video}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=ru&modestbranding=1&fs=1&autohide=1`}
+              width="1052"
+              height="591"
+            ></iframe>
+          ) : (
+            <h1 className={s.modalH}>Sorry! No trailer.</h1>
+          )}
         </Modal>
       }
     </>

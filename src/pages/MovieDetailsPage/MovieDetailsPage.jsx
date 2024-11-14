@@ -96,9 +96,11 @@ export default function MovieDetailsPage() {
                   );
                 })}
               </ul>
-              <button onClick={handleClick} className={s.button}>
-                Trailer
-              </button>
+              {
+                <button onClick={handleClick} className={s.button}>
+                  Trailer
+                </button>
+              }
             </div>
           </>
         )}
