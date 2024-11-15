@@ -18,7 +18,6 @@ export default function MoviesPage() {
 
   const [searchParams, setSearchParams] = useSearchParams("");
   const serchName = searchParams.get("name") ?? "";
-  console.log(serchName);
 
   const handleSubmit = (text) => {
     setMoviesRequest([]);

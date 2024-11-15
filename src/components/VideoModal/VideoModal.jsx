@@ -8,19 +8,22 @@ import { requestVideo } from "../../requests-API";
 export default function VideoModal({ videoId, isOpen, onRequestClose }) {
   const [errorMessage, setErrorMessage] = useState(false);
   const [video, setVideo] = useState("");
+  const [videoButton, setVideoButton] = useState(false);
 
   useEffect(() => {
     async function movieVideo() {
       try {
         const data = await requestVideo(videoId);
-        console.log(data);
         const videos = data.results;
+        console.log(videos);
         if (videos.length === 0) {
           return;
         }
         const src = videos.find((video) => video.type === "Trailer");
-        setVideo(src.key);
-        // console.log(data.results[0]);
+        if (src.key !== "") {
+          setVideoButton(true);
+          setVideo(src.key);
+        }
       } catch (error) {
         error;
         setErrorMessage(true);
@@ -51,11 +54,12 @@ export default function VideoModal({ videoId, isOpen, onRequestClose }) {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          {video !== "" ? (
+          {videoButton ? (
             <iframe
               src={`//www.youtube.com/embed/${video}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=ru&modestbranding=1&fs=1&autohide=1`}
               width="1052"
               height="591"
+              title="youtube"
             ></iframe>
           ) : (
             <h1 className={s.modalH}>Sorry! No trailer.</h1>
