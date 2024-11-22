@@ -16,9 +16,6 @@ export default function VideoModal({ videoId, isOpen, onRequestClose }) {
         const data = await requestVideo(videoId);
         const videos = data.results;
         console.log(videos);
-        if (videos.length === 0) {
-          return;
-        }
         const src = videos.find((video) => video.type === "Trailer");
         if (src.key !== "") {
           setVideoButton(true);
@@ -47,25 +44,23 @@ export default function VideoModal({ videoId, isOpen, onRequestClose }) {
   return (
     <>
       {/* {errorMessage && <ErrorMessage />} */}
-      {
-        <Modal
-          isOpen={isOpen}
-          onRequestClose={onRequestClose}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          {videoButton ? (
-            <iframe
-              src={`//www.youtube.com/embed/${video}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=ru&modestbranding=1&fs=1&autohide=1`}
-              width="1052"
-              height="591"
-              title="youtube"
-            ></iframe>
-          ) : (
-            <h1 className={s.modalH}>Sorry! No trailer.</h1>
-          )}
-        </Modal>
-      }
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        {videoButton ? (
+          <iframe
+            src={`//www.youtube.com/embed/${video}?autoplay=1&origin=https%3A%2F%2Fwww.themoviedb.org&hl=ru&modestbranding=1&fs=1&autohide=1`}
+            width="1052"
+            height="591"
+            title="youtube"
+          ></iframe>
+        ) : (
+          <h1 className={s.modalH}>Sorry! No trailer.</h1>
+        )}
+      </Modal>
     </>
   );
 }

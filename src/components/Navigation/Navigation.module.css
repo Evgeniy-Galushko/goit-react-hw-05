@@ -7,13 +7,30 @@
   gap: 25px;
   background: linear-gradient(to right, #052c65 0%, rgba(3, 37, 65, 1) 100%);
   margin-bottom: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+
+  a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .activ {
+    text-decoration: underline;
+    color: black;
+  }
 }
 
-.hederNav {
+/* .hederNav {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 24px;
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #fff;
-}
+} */

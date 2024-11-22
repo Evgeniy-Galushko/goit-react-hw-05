@@ -1,7 +1,7 @@
 import s from "./MovieDetailsPage.module.css";
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { requestMoviesId } from "../../requests-API";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
@@ -17,6 +17,8 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState(null);
 
   const location = useLocation();
+
+  console.log(location.state);
   const backLinkHref = useRef(location.state ?? `/movies`);
   // console.log(location.state.search);
 
@@ -120,7 +122,9 @@ export default function MovieDetailsPage() {
           </li>
         </ul>
       </div>
-      <Outlet />
+      <Suspense fallback={<div>Loading data...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
