@@ -24,7 +24,7 @@ export default function RequestForm({ handleSubmit }) {
           pattern="^[а-яА-Яa-zA-Z ]{0,100}$"
           title="Введите текст"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Search for movie"
         />
         <button type="submit" className={s.button}>
           Search
