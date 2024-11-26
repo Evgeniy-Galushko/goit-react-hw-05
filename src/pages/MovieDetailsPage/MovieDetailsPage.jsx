@@ -16,6 +16,8 @@ export default function MovieDetailsPage() {
 
   const [movie, setMovie] = useState(null);
 
+  console.log(movie);
+
   const location = useLocation();
 
   console.log(location.state);
@@ -77,6 +79,7 @@ export default function MovieDetailsPage() {
                     ? `https://image.tmdb.org/t/p/w220_and_h330_face${movie.backdrop_path}`
                     : defaultImg
                 }
+                alt={movie.title}
               />
             </div>
             <div className={s.divPagesDiv}>
