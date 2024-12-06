@@ -17,4 +17,10 @@
   width: 680px;
   height: 350px;
   box-shadow: 0px 0px 10px 5px #808080;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 10px 5px #05785d;
+  }
 }
