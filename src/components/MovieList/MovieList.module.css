@@ -6,18 +6,18 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
   padding: 30px;
 }
 
 .li {
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 15px;
-  width: 680px;
+  width: 660px;
   height: 350px;
   box-shadow: 0px 0px 10px 5px #808080;
   transition: transform 0.3s ease;
+  background-color: #fff;
 
   &:hover {
     transform: scale(1.03);

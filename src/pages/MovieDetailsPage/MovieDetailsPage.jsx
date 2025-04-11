@@ -16,8 +16,6 @@ export default function MovieDetailsPage() {
 
   const [movie, setMovie] = useState(null);
 
-  console.log(movie);
-
   const location = useLocation();
 
   console.log(location.state);
@@ -30,6 +28,7 @@ export default function MovieDetailsPage() {
     async function movieDetail() {
       try {
         setLoader(true);
+
         const data = await requestMoviesId(movieId);
         setMovie(data);
       } catch (error) {
@@ -84,12 +83,12 @@ export default function MovieDetailsPage() {
             </div>
             <div className={s.divPagesDiv}>
               <h2 className={s.hTwo}>
-                {movie.original_title}({movie.release_date.slice(0, 4)})%
+                {movie.original_title} ({movie.release_date.slice(0, 4)})
               </h2>
               <p className={s.paragraph}>
                 User score: {movie.popularity.toFixed()}%
               </p>
-              <h3>Overview</h3>
+              <h3 className={s.overview}>Overview</h3>
               <p className={s.paragraph}>{movie.overview}</p>
               <h3 className={s.hThree}>Genres</h3>
               <ul className={s.genres}>
@@ -112,14 +111,17 @@ export default function MovieDetailsPage() {
       </div>
       <div className={s.divPagesCast}>
         <h2 className={s.hTwo}>Additional information</h2>
-        <ul>
+        <ul className={s.ulNavLink}>
           <li>
-            <NavLink to={`/movies/${movieId}/cast`} className={s.navLink}>
+            <NavLink to={`/movies/${movieId}/cast`} className={s.navLinkCast}>
               Cast
             </NavLink>
           </li>
           <li>
-            <NavLink to={`/movies/${movieId}/reviews`} className={s.navLink}>
+            <NavLink
+              to={`/movies/${movieId}/reviews`}
+              className={s.navLinkCast}
+            >
               Reviews
             </NavLink>
           </li>
